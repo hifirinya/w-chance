@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wチャンスキャンペーン</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    color:white;
+    font-family:sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.box{
+    width:90%;
+    max-width:400px;
+    background:#1f1f1f;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 20px gold;
+}
+
+h1{
+    color:gold;
+}
+
+input{
+    width:90%;
+    padding:12px;
+    font-size:18px;
+    border-radius:10px;
+    border:none;
+    margin-top:20px;
+}
+
+button{
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+}
+
+#loading{
+    display:none;
+    margin-top:20px;
+}
+
+#result{
+    display:none;
+    margin-top:30px;
+    font-size:24px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🎫 Wチャンスキャンペーン</h1>
+
+<p>シリアルコードを入力してください</p>
+
+<input id="code" placeholder="例：Y20261104N" autocomplete="off">
+
+<button onclick="checkCode()">抽選する</button>
+
+<div id="loading">
+    <h2>抽選中...</h2>
+</div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function checkCode(){
+
+const code=document.getElementById("code").value.trim().toUpperCase();
+
+document.getElementById("loading").style.display="block";
+document.getElementById("result").style.display="none";
+
+setTimeout(function(){
+
+document.getElementById("loading").style.display="none";
+
+if(code==="Y20261104N"){
+
+document.getElementById("result").innerHTML=
+"🎉<br><span style='color:gold;font-size:35px;'>当選！</span>";
+
+}else if(code==="N20261104Y"|| code==="N20261104A" || code==="N20261104B"|| code==="N20261104C" || code==="N20261104D"){
+
+document.getElementById("result").innerHTML=
+"😢<br><span style='color:#ccc;font-size:30px;'>残念…<br>今回はご当選となりませんでした。</span>";
+
+}else{
+
+document.getElementById("result").innerHTML=
+"<span style='color:red;'>シリアルコードが正しくありません。</span>";
+
+}
+
+document.getElementById("result").style.display="block";
+
+},3000);
+
+}
+
+</script>
+
+</body>
+</html>
